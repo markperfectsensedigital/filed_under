@@ -1,13 +1,15 @@
 #!/Library/Frameworks/Python.framework/Versions/3.5/bin/python3
 #
 # This script extracts all the tags in the docs project. It presumes that
-# all tags start with the phrase 'Filed under:
+# all tags start with the phrase 'Filed under:' or with the substitution '|filedunder'
 #
 import os
 import re
 
-pattern = re.compile('Filed under.*')
-syntax_pattern = re.compile('Filed under: \*\*.{2,}\*\*')
+#pattern = re.compile('Filed under.*')
+pattern = re.compile('(?:Filed under|\|filedunder\|).*')
+syntax_pattern = re.compile('(?:Filed under:|\|filedunder\|) \*\*.{2,}\*\*')
+#syntax_pattern = re.compile('Filed under: \*\*.{2,}\*\*')
 tag_pattern = re.compile('\*\*(.*)\*\*')
 tag_dictionary = {}
 
